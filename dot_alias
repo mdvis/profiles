@@ -43,4 +43,9 @@
     alias ocx="ollama launch codex --model qwen3.5"
     alias opi="ollama launch pi --model qwen3.5"
     alias ohm="ollama launch hermes --model qwen3.5"
+
+    alias occh="ollama launch claude --model qwen3.6"
+    alias ocxh="ollama launch codex --model qwen3.6"
+    alias opih="ollama launch pi --model qwen3.6"
+    alias ohmh="ollama launch hermes --model qwen3.6"
 # }
