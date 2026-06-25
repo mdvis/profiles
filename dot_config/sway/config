@@ -18,7 +18,7 @@ set $menu rofi -show drun -show-icons
 ### Output configuration
 
 # Default wallpaper
-set $wallpaper ~/.dotfiles/wallpapers/desktop-bg.jpg
+set $wallpaper ~/.config/sway/wallpapers/desktop-bg.jpg
 exec swaybg -i $wallpaper -m fill
 # output * bg $wallpaper fill
 
