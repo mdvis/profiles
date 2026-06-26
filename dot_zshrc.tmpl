@@ -23,10 +23,12 @@ export PATH="${HOME}/.local/bin:$PATH"
 [[ -f ~/.claude_env ]] && . $HOME/.claude_env
 # sys end
 
+{{- if and (eq .chezmoi.os "darwin") (eq .chezmoi.arch "arm64") }}
 # homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 # homebrew end
+{{- end }}
 
 # fzf
 export FZF_DEFAULT_COMMAND="fd -H -t f -t d --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build}"
@@ -53,10 +55,3 @@ export HUSKY=0 # Disables all Git hooks
 # husky end
 
 # other tools end
-
-# opencode
-export PATH=/Users/mdvis/.opencode/bin:$PATH
-
-
-# Added by Antigravity CLI installer
-export PATH="/Users/mdvis/.local/bin:$PATH"
