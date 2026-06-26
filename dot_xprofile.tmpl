@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "linux" }}
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -9,3 +10,4 @@ guake &
 
 # xrandr --output HDMI-0 --mode 1920x1080 --scale 0.75x0.75
 # xrandr --output eDP --mode 1920x1080 --scale 0.75x0.75
+{{- end }}
