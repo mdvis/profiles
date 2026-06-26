@@ -8,3 +8,5 @@
 .config/i3/
 .config/X11/
 {{- end }}
+
+.DS_Store
