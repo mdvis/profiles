@@ -20,16 +20,13 @@ set -g mouse on
 
 # shell
 {{- if eq .chezmoi.os "linux" }}
+    set -g default-shell /usr/local/bin/zsh
+{{- else }}
+    {{- if eq .chezmoi.arch "arm64" }}
 set -g default-shell /usr/local/bin/zsh
-{{- end }}
-
-{{- if eq .chezmoi.os "darwin" }}
-{{- if eq .chezmoi.arch "arm64" }}
-set -g default-shell /usr/local/bin/zsh
-{{- end }}
-{{- if eq .chezmoi.arch "amd64" }}
+    {{- else }}
 set -g default-shell /bin/zsh
-{{- end }}
+    {{- end }}
 {{- end }}
 
 # status-line
