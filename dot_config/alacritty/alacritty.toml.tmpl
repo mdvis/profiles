@@ -1,0 +1,32 @@
+[window]
+startup_mode = "Maximized"
+opacity = 0.85
+
+[font.normal]
+family = "SauceCodePro Nerd Font Mono"
+style = "Regular"
+
+[font]
+size = 16.0
+
+[terminal.shell]
+{{ if eq .chezmoi.os "linux" -}}
+program = "/usr/local/bin/zsh"
+{{- end -}}
+
+{{- if eq .chezmoi.os "darwin" -}}
+{{- if eq .chezmoi.arch "arm64" -}}
+program = "/usr/local/bin/zsh"
+{{- end }}
+{{- if eq .chezmoi.arch "amd64" -}}
+program = "/bin/zsh"
+{{- end -}}
+{{- end }}
+args = ['--login']
+
+[cursor.style]
+shape = "Block"
+blinking = "Always"
+
+[selection]
+save_to_clipboard = true
