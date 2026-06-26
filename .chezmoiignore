@@ -1,0 +1,10 @@
+# .chezmoiignore
+
+{{- if ne .chezmoi.os "linux" }}
+.config/sway/
+.config/swaylock/
+.config/waybar/
+.config/foot/
+.config/i3/
+.config/X11/
+{{- end }}
