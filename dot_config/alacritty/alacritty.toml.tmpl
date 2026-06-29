@@ -11,18 +11,17 @@ size = 16.0
 
 [terminal.shell]
 {{ if eq .chezmoi.os "linux" -}}
-program = "/usr/local/bin/zsh"
+program = "/usr/local/bin/tmux"
 {{- end -}}
 
 {{- if eq .chezmoi.os "darwin" -}}
 {{- if eq .chezmoi.arch "arm64" -}}
-program = "/usr/local/bin/zsh"
+program = "/usr/local/bin/tmux"
 {{- end }}
 {{- if eq .chezmoi.arch "amd64" -}}
-program = "/bin/zsh"
+program = "/usr/local/bin/tmux"
 {{- end -}}
 {{- end }}
-args = ['--login']
 
 [cursor.style]
 shape = "Block"
