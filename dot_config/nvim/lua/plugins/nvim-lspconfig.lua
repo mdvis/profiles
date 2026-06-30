@@ -56,24 +56,64 @@ return {
 
         -- Navigation
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
-        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
-        vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, vim.tbl_extend("force", opts, { desc = "Go to type definition" }))
+        vim.keymap.set(
+          "n",
+          "gD",
+          vim.lsp.buf.declaration,
+          vim.tbl_extend("force", opts, { desc = "Go to declaration" })
+        )
+        vim.keymap.set(
+          "n",
+          "gi",
+          vim.lsp.buf.implementation,
+          vim.tbl_extend("force", opts, { desc = "Go to implementation" })
+        )
+        vim.keymap.set(
+          "n",
+          "gt",
+          vim.lsp.buf.type_definition,
+          vim.tbl_extend("force", opts, { desc = "Go to type definition" })
+        )
         vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Show references" }))
 
         -- Documentation
         vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover documentation" }))
-        vim.keymap.set("n", "<leader>ck", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature help" }))
+        vim.keymap.set(
+          "n",
+          "<leader>ck",
+          vim.lsp.buf.signature_help,
+          vim.tbl_extend("force", opts, { desc = "Signature help" })
+        )
 
         -- Code actions
-        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code action" }))
+        vim.keymap.set(
+          { "n", "v" },
+          "<leader>ca",
+          vim.lsp.buf.code_action,
+          vim.tbl_extend("force", opts, { desc = "Code action" })
+        )
         vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
 
         -- Diagnostics
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Previous diagnostic" }))
+        vim.keymap.set(
+          "n",
+          "[d",
+          vim.diagnostic.goto_prev,
+          vim.tbl_extend("force", opts, { desc = "Previous diagnostic" })
+        )
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
-        vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Show diagnostic" }))
-        vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, vim.tbl_extend("force", opts, { desc = "Diagnostic list" }))
+        vim.keymap.set(
+          "n",
+          "<leader>d",
+          vim.diagnostic.open_float,
+          vim.tbl_extend("force", opts, { desc = "Show diagnostic" })
+        )
+        vim.keymap.set(
+          "n",
+          "<leader>q",
+          vim.diagnostic.setloclist,
+          vim.tbl_extend("force", opts, { desc = "Diagnostic list" })
+        )
 
         -- Formatting
         vim.keymap.set("n", "<leader>f", function()
@@ -81,8 +121,18 @@ return {
         end, vim.tbl_extend("force", opts, { desc = "Format buffer" }))
 
         -- Workspace
-        vim.keymap.set("n", "<leader>lwa", vim.lsp.buf.add_workspace_folder, vim.tbl_extend("force", opts, { desc = "Add workspace folder" }))
-        vim.keymap.set("n", "<leader>lwr", vim.lsp.buf.remove_workspace_folder, vim.tbl_extend("force", opts, { desc = "Remove workspace folder" }))
+        vim.keymap.set(
+          "n",
+          "<leader>lwa",
+          vim.lsp.buf.add_workspace_folder,
+          vim.tbl_extend("force", opts, { desc = "Add workspace folder" })
+        )
+        vim.keymap.set(
+          "n",
+          "<leader>lwr",
+          vim.lsp.buf.remove_workspace_folder,
+          vim.tbl_extend("force", opts, { desc = "Remove workspace folder" })
+        )
         vim.keymap.set("n", "<leader>lwl", function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, vim.tbl_extend("force", opts, { desc = "List workspace folders" }))
@@ -141,12 +191,30 @@ return {
         },
       },
       pyright = {
+        before_init = function(_, config)
+          -- 自动检测并使用项目的虚拟环境
+          local venv_paths = {
+            vim.fn.getcwd() .. "/.venv", -- uv/poetry 标准目录
+            vim.fn.getcwd() .. "/venv", -- virtualenv 标准目录
+            vim.env.VIRTUAL_ENV, -- 激活的虚拟环境
+          }
+
+          for _, venv_path in ipairs(venv_paths) do
+            if venv_path and vim.fn.isdirectory(venv_path) == 1 then
+              config.settings.python.pythonPath = venv_path .. "/bin/python"
+              -- 可选：打印日志以便调试
+              vim.notify("🐍 使用虚拟环境: " .. venv_path, vim.log.levels.INFO)
+              break
+            end
+          end
+        end,
         settings = {
           python = {
             analysis = {
               typeCheckingMode = "basic",
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
+              diagnosticMode = "workspace", -- 新增：工作区级别诊断
             },
           },
         },
@@ -192,7 +260,7 @@ return {
       callback = function(args)
         local bufnr = args.buf
         local ft = vim.bo[bufnr].filetype
-        
+
         -- Map filetypes to LSP servers (string or list of strings)
         local ft_to_server = {
           lua = "lua_ls",
