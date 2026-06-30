@@ -24,7 +24,11 @@ return {
 
     -- shell
     default_prog = {
-        "/usr/local/bin/tmux",
+      {{- if eq .chezmoi.arch "arm64" }}
+      "/opt/homebrew/bin/tmux"
+      {{- else }}
+      "/usr/local/bin/tmux"
+      {{- end }}
     },
 
     -- cursor
