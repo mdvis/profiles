@@ -9,7 +9,7 @@
     safecrlf = true
 [commit]
     template = ~/.gitmessages
-    # gpgsign = true
+    gpgsign = true
     gpgsign = false
     verbose = true
 [merge]
