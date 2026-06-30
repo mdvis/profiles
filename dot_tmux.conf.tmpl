@@ -19,15 +19,7 @@ set -g pane-base-index 1
 set -g mouse on
 
 # shell
-{{- if eq .chezmoi.os "linux" }}
-    set -g default-shell /usr/local/bin/zsh
-{{- else }}
-    {{- if eq .chezmoi.arch "arm64" }}
-set -g default-shell /usr/local/bin/zsh
-    {{- else }}
 set -g default-shell /bin/zsh
-    {{- end }}
-{{- end }}
 
 # status-line
 set-option -g status on
