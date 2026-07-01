@@ -1,0 +1,41 @@
+{{- $fontsDir := "" -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $fontsDir = "Library/Fonts" -}}
+{{- else -}}
+{{-   $fontsDir = ".local/share/fonts" -}}
+{{- end -}}
+"{{ $fontsDir }}/LXGWWenKaiMono-Light.ttf":
+  type: file
+  url: "https://raw.githubusercontent.com/lxgw/LxgwWenKai/main/fonts/TTF/LXGWWenKaiMono-Light.ttf"
+  checksum:
+    sha256: "e9fb94a7b3940dabce0ea9bc7a6ccf08e98877a0542e95a6b4829437f1eeac72"
+
+"{{ $fontsDir }}/LXGWWenKaiMono-Medium.ttf":
+  type: file
+  url: "https://raw.githubusercontent.com/lxgw/LxgwWenKai/main/fonts/TTF/LXGWWenKaiMono-Medium.ttf"
+  checksum:
+    sha256: "2a5e5c09d65225ad6619c7f4799d824b00c3239921b9e44245c079ad07941b33"
+
+"{{ $fontsDir }}/LXGWWenKaiMono-Regular.ttf":
+  type: file
+  url: "https://raw.githubusercontent.com/lxgw/LxgwWenKai/main/fonts/TTF/LXGWWenKaiMono-Regular.ttf"
+  checksum:
+    sha256: "cd957f870149d1fa7c1080bd079418fe9d5d60899316da1e12d7302e769ed3be"
+
+"{{ $fontsDir }}/SauceCodeProNerdFontMono-Light.ttf":
+  type: file
+  url: "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/SourceCodePro/SauceCodeProNerdFontMono-Light.ttf"
+  checksum:
+    sha256: "174a8568bbe56fc67c2d5f210897c63fec0452fcbb02e8ea1b1dcf163b376d7d"
+
+"{{ $fontsDir }}/SauceCodeProNerdFontMono-Medium.ttf":
+  type: file
+  url: "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/SourceCodePro/SauceCodeProNerdFontMono-Medium.ttf"
+  checksum:
+    sha256: "95ab3d5f724535554ec040633d4e7adb237d18d4050bda0e7fa92c7c213b475a"
+
+"{{ $fontsDir }}/SauceCodeProNerdFontMono-Regular.ttf":
+  type: file
+  url: "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/SourceCodePro/SauceCodeProNerdFontMono-Regular.ttf"
+  checksum:
+    sha256: "6d687bfc41b42de0984ff58c43bf98115472027337a2e0980e8b1ecabe466099"

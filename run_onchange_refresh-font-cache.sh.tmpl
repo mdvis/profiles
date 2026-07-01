@@ -1,0 +1,6 @@
+{{- if eq .chezmoi.os "linux" }}
+#!/usr/bin/env bash
+set -euo pipefail
+fc-cache -f "${HOME}/.local/share/fonts" >/dev/null 2>&1 || true
+echo "font cache refreshed"
+{{- end }}
