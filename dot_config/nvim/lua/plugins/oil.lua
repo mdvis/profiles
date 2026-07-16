@@ -6,8 +6,8 @@ return {
     view_options = {
       show_hidden = true,
       is_hidden_file = function(name, bufnr)
-        -- Don't mark files as "hidden" since we want to show dotfiles
-        return false
+        -- Mark dotfiles as hidden so they get different styling
+        return vim.startswith(name, ".")
       end,
       is_always_hidden = function(name, bufnr)
         local always_hidden = {
@@ -51,14 +51,13 @@ return {
         }
         
         for _, pattern in ipairs(always_hidden) do
-          if pattern:match("%*") then
-            -- Handle wildcard patterns like *.egg-info
-            local regex = pattern:gsub("%.", "%%."):gsub("%*", ".*")
-            if name:match("^" .. regex .. "$") then
-              return true
-            end
-          else
-            if name == pattern then
+          if name == pattern then
+            return true
+          end
+          -- Handle patterns with wildcards (like *.egg-info)
+          if pattern:find("*", 1, true) then
+            local regex = "^" .. pattern:gsub("%.", "%%."):gsub("*", ".*") .. "$"
+            if name:match(regex) then
               return true
             end
           end
