@@ -6,7 +6,8 @@ return {
     view_options = {
       show_hidden = true,
       is_hidden_file = function(name, bufnr)
-        return vim.startswith(name, ".")
+        -- Don't mark files as "hidden" since we want to show dotfiles
+        return false
       end,
       is_always_hidden = function(name, bufnr)
         local always_hidden = {
@@ -28,7 +29,6 @@ return {
           "venv",
           ".tox",
           ".eggs",
-          "*.egg-info",
           ".ipynb_checkpoints",
           -- Java
           "target",
@@ -38,7 +38,6 @@ return {
           "out",
           ".idea",
           -- Rust
-          "target",
           "Cargo.lock",
           -- Go
           "vendor",
@@ -53,8 +52,8 @@ return {
         
         for _, pattern in ipairs(always_hidden) do
           if pattern:match("%*") then
-            -- Handle wildcard patterns
-            local regex = pattern:gsub("%*", ".*")
+            -- Handle wildcard patterns like *.egg-info
+            local regex = pattern:gsub("%.", "%%."):gsub("%*", ".*")
             if name:match("^" .. regex .. "$") then
               return true
             end
