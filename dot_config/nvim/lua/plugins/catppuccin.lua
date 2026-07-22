@@ -8,7 +8,6 @@ return {
       background = { light = "latte", dark = "mocha" },
       transparent_background = false,
       integrations = {
-        mini = true,
         native_lsp = { enabled = true },
       },
     })
