@@ -16,7 +16,7 @@ return {
       "taplo",
       "yamlls",
     },
-    -- automatic_enable = true,
+    automatic_enable = true,
   },
   config = function(_, opts)
     require("mason-lspconfig").setup(opts)

@@ -248,46 +248,5 @@ return {
         vim.lsp.config[server] = default_config
       end
     end
-
-    -- Enable servers for appropriate filetypes
-    vim.api.nvim_create_autocmd("FileType", {
-      group = vim.api.nvim_create_augroup("UserLspStart", {}),
-      callback = function(args)
-        local bufnr = args.buf
-        local ft = vim.bo[bufnr].filetype
-
-        -- Map filetypes to LSP servers (string or list of strings)
-        local ft_to_server = {
-          lua = "lua_ls",
-          typescript = { "ts_ls", "eslint" },
-          typescriptreact = { "ts_ls", "eslint" },
-          javascript = { "ts_ls", "eslint" },
-          javascriptreact = { "ts_ls", "eslint" },
-          python = "pyright",
-          go = "gopls",
-          rust = "rust_analyzer",
-          sh = "bashls",
-          bash = "bashls",
-          json = "jsonls",
-          jsonc = "jsonls",
-          markdown = "marksman",
-          ["markdown.mdx"] = "marksman",
-          toml = "taplo",
-          yaml = "yamlls",
-          yml = "yamlls",
-        }
-
-        local entry = ft_to_server[ft]
-        if entry then
-          if type(entry) == "string" then
-            vim.lsp.enable(entry)
-          else
-            for _, s in ipairs(entry) do
-              vim.lsp.enable(s)
-            end
-          end
-        end
-      end,
-    })
   end,
 }
