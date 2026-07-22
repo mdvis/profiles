@@ -2,6 +2,9 @@ return {
   "stevearc/conform.nvim",
   cmd = "ConformInfo",
   event = { "BufWritePre" },
+  keys = {
+    { "<leader>f", function() require("conform").format({ async = true, lsp_format = "fallback" }) end, desc = "Format buffer" },
+  },
   opts = {
     formatters_by_ft = {
       go = { "goimports", "gofumpt" },

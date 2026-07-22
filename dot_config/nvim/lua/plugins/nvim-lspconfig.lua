@@ -115,11 +115,6 @@ return {
           vim.tbl_extend("force", opts, { desc = "Diagnostic list" })
         )
 
-        -- Formatting
-        vim.keymap.set("n", "<leader>f", function()
-          require("conform").format({ async = true, lsp_format = "fallback" })
-        end, vim.tbl_extend("force", opts, { desc = "Format buffer" }))
-
         -- Workspace
         vim.keymap.set(
           "n",
