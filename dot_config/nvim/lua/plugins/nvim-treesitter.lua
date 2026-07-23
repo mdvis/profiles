@@ -1,8 +1,11 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "main",
+  lazy = false,
   build = ":TSUpdate",
-  opts = {
-    ensure_installed = {
+  config = function()
+    -- 需要安装的 parser 列表
+    local ensure_installed = {
       "bash",
       "go",
       "gomod",
@@ -25,12 +28,25 @@ return {
       "vim",
       "vimdoc",
       "yaml",
-    },
-    auto_install = true,
-    highlight = { enable = true },
-    indent = { enable = true },
-  },
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
+    }
+
+    -- 异步安装缺失的 parser（不阻塞启动）
+    local ts_config = require("nvim-treesitter.config")
+    local installed = ts_config.get_installed()
+    local missing = vim.tbl_filter(function(lang)
+      return not vim.list_contains(installed, lang)
+    end, ensure_installed)
+    if #missing > 0 then
+      require("nvim-treesitter.install").install(missing, { summary = true })
+    end
+
+    -- 启用 treesitter 高亮与缩进（Neovim 0.10+ 内建 vim.treesitter.start）
+    -- runtime 仅对部分 filetype 自动启动，这里显式覆盖所有带 parser 的 filetype
+    vim.api.nvim_create_autocmd("FileType", {
+      group = vim.api.nvim_create_augroup("UserTreesitter", { clear = true }),
+      callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+      end,
+    })
   end,
 }
