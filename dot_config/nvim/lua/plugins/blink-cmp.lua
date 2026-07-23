@@ -22,6 +22,7 @@ return {
       },
     },
     sources = { default = { "lsp", "path", "snippets", "buffer" } },
+    signature = { enabled = true }, -- 输入函数参数时自动弹出签名帮助
     fuzzy = { implementation = "prefer_rust_with_warning" },
   },
 }
