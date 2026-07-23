@@ -22,6 +22,16 @@ return {
       jsonc = { "prettierd", "prettier", stop_after_first = true },
       yaml = { "prettierd", "prettier", stop_after_first = true },
       markdown = { "prettierd", "prettier", stop_after_first = true },
+      html = { "prettierd", "prettier", stop_after_first = true },
+      css = { "prettierd", "prettier", stop_after_first = true },
+      scss = { "prettierd", "prettier", stop_after_first = true },
+      less = { "prettierd", "prettier", stop_after_first = true },
+      toml = { "taplo" },
+    },
+    formatters = {
+      rustfmt = {
+        args = { "--edition=2021" },
+      },
     },
     format_on_save = function(bufnr)
       return {
