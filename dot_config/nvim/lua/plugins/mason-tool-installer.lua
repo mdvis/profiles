@@ -10,7 +10,6 @@ return {
       "golangci-lint",
       "luacheck",
       "markdownlint-cli2",
-      "prettier",
       "prettierd",
       "ruff",
       "shellcheck",
