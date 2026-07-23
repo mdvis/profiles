@@ -20,7 +20,7 @@ return {
     },
     auto_update = false,
     run_on_start = true,
-    start_delay = 2500,
+    start_delay = 500,
     debounce_hours = 12,
   },
 }
