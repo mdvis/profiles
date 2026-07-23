@@ -16,9 +16,6 @@ return {
       "taplo",
       "yamlls",
     },
-    automatic_enable = true,
+    automatic_enable = false, -- enable 由 nvim-lspconfig.lua 统一调用 vim.lsp.enable()
   },
-  config = function(_, opts)
-    require("mason-lspconfig").setup(opts)
-  end,
 }

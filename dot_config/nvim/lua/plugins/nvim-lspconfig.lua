@@ -236,17 +236,28 @@ return {
       },
     }
 
-    -- Setup servers using vim.lsp.config (new API)
-    for server, config in pairs(servers) do
+    -- All servers to configure & enable (single source of truth)
+    local all_servers = {
+      "bashls",
+      "eslint",
+      "jsonls",
+      "lua_ls",
+      "pyright",
+      "rust_analyzer",
+      "ts_ls",
+      "gopls",
+      "marksman",
+      "taplo",
+      "yamlls",
+    }
+
+    -- Apply configs (merge server-specific over default)
+    for _, server in ipairs(all_servers) do
+      local config = servers[server] or {}
       vim.lsp.config[server] = vim.tbl_deep_extend("force", default_config, config)
     end
 
-    -- Setup remaining servers with default config
-    local all_servers = { "bashls", "eslint", "jsonls", "marksman", "taplo", "yamlls" }
-    for _, server in ipairs(all_servers) do
-      if not servers[server] then
-        vim.lsp.config[server] = default_config
-      end
-    end
+    -- Enable all servers (nvim 0.11+ API)
+    vim.lsp.enable(all_servers)
   end,
 }
