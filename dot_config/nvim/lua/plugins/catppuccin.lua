@@ -18,6 +18,10 @@ return {
         render_markdown = true,
         flash = true,
         mini = { enabled = true, indentscope_color = "" },
+        fidget = true,
+        indent_blankline = { enabled = true, scope_color = "" },
+        nvim_surround = true,
+        oil = true,
       },
     })
     vim.cmd.colorscheme "catppuccin"
