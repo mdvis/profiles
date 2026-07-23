@@ -73,12 +73,6 @@ return {
 
         -- Documentation
         vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover documentation" }))
-        vim.keymap.set(
-          "n",
-          "<leader>ck",
-          vim.lsp.buf.signature_help,
-          vim.tbl_extend("force", opts, { desc = "Signature help" })
-        )
 
         -- Code actions
         vim.keymap.set(
