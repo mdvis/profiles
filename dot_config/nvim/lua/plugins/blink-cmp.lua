@@ -1,11 +1,11 @@
 return {
   "saghen/blink.cmp",
   version = "v1.*",
-  dependencies = { "L3MON4D3/LuaSnip" },
+  dependencies = { "rafamadriz/friendly-snippets" },
   opts = {
     keymap = { preset = "super-tab" },
     appearance = { nerd_font_variant = "mono" },
-    snippets = { preset = "luasnip" },
+    snippets = { preset = "default" },
     completion = {
       trigger = {
         show_on_trigger_character = true,
