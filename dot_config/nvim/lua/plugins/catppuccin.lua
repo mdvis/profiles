@@ -9,6 +9,15 @@ return {
       transparent_background = false,
       integrations = {
         native_lsp = { enabled = true },
+        treesitter = true,
+        telescope = { enabled = true },
+        gitsigns = true,
+        which_key = true,
+        mason = true,
+        trouble = true,
+        render_markdown = true,
+        flash = true,
+        mini = { enabled = true, indentscope_color = "" },
       },
     })
     vim.cmd.colorscheme "catppuccin"
