@@ -1,6 +1,6 @@
 return {
   "mrjones2014/smart-splits.nvim",
-  lazy = false, -- recommended to not lazy load for multiplexer integration
+  lazy = false, -- multiplexer integration 需要常驻；若不用 tmux/zellij/wezterm 可改为 keys 触发
   opts = {
     -- Ignored filetypes (only while resizing)
     ignored_filetypes = { "NvimTree", "neo-tree" },
