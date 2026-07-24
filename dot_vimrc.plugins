@@ -71,7 +71,7 @@ scriptencoding utf-8
         " }
 
         " Git {
-            Plug 'tpope/vim-fugitive', { 'on': ['G', 'Gdiff', 'Gblame'] }
+            Plug 'tpope/vim-fugitive', { 'on': ['G', 'Gdiffsplit', 'Gblame'] }
         " }
 
         " Augment {
