@@ -3,7 +3,7 @@ return {
   lazy = false, -- multiplexer integration 需要常驻；若不用 tmux/zellij/wezterm 可改为 keys 触发
   opts = {
     -- Ignored filetypes (only while resizing)
-    ignored_filetypes = { "NvimTree", "neo-tree" },
+    ignored_filetypes = { "oil" },
     -- Default resize amount
     default_amount = 3,
     -- Behavior at edge: 'wrap' | 'split' | 'stop'

@@ -17,7 +17,6 @@ return {
         "alpha",
         "dashboard",
         "oil",
-        "Trouble",
         "trouble",
         "lazy",
         "mason",

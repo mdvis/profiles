@@ -12,8 +12,6 @@ return {
       python = { "ruff_format" }, -- 使用 ruff_format（更快），如需 black 可替换
       lua = { "stylua" },
       sh = { "shfmt" },
-      bash = { "shfmt" },
-      zsh = { "shfmt" },
       javascript = { "prettierd", "prettier", stop_after_first = true },
       javascriptreact = { "prettierd", "prettier", stop_after_first = true },
       typescript = { "prettierd", "prettier", stop_after_first = true },

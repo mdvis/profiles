@@ -9,7 +9,7 @@ return {
       section_separators = { left = "", right = "" },
       globalstatus = true, -- single statusline for all windows
       disabled_filetypes = {
-        statusline = { "alpha", "neo-tree" },
+        statusline = { "alpha" },
       },
     },
     sections = {
