@@ -83,14 +83,9 @@ return {
         )
         vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
 
-        -- Diagnostics
-        vim.keymap.set(
-          "n",
-          "[d",
-          vim.diagnostic.goto_prev,
-          vim.tbl_extend("force", opts, { desc = "Previous diagnostic" })
-        )
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
+        -- Diagnostics (0.11+ API: vim.diagnostic.jump 取代 goto_prev/next)
+        vim.keymap.set("n", "[d", function() vim.diagnostic.jump { count = -1, float = true } end, vim.tbl_extend("force", opts, { desc = "Previous diagnostic" }))
+        vim.keymap.set("n", "]d", function() vim.diagnostic.jump { count = 1, float = true } end, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
         vim.keymap.set(
           "n",
           "<leader>d",
@@ -219,7 +214,8 @@ return {
             cargo = {
               allFeatures = true,
             },
-            checkOnSave = false,
+            -- checkOnSave 已弃用，改用 check.enable（rust-analyzer 最新版）
+            check = { enable = false },
           },
         },
       },
