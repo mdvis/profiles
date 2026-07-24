@@ -1,3 +1,5 @@
 {
-  "diagnostic.enable": false
+  "diagnostic.enable": false,
+  "suggest.noselect": false,
+  "diagnostic.messageTarget": "echo"
 }
