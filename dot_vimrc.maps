@@ -27,8 +27,8 @@ scriptencoding utf-8
     " }
 
     " NerdTree {
-        map <silent> <leader>e :NERDTreeFind<CR>
-        map <silent> <leader>n :NERDTreeToggle<CR>
+        nnoremap <silent> <leader>e :NERDTreeFind<CR>
+        nnoremap <silent> <leader>n :NERDTreeToggle<CR>
     " }
 
     " Tagbar {
