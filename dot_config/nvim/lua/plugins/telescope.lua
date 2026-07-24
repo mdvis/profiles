@@ -24,7 +24,7 @@ return {
         prompt_prefix = "🔍 ",
         selection_caret = "➤ ",
 
-        file_ignore_patterns = { "node_modules", "%.lock", ".git", "dist", ".venv" },
+        file_ignore_patterns = { "node_modules", "%.lock", "%.git/", "dist", ".venv" },
 
         mappings = {
           i = {

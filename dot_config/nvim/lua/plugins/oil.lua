@@ -55,13 +55,6 @@ return {
           if name == pattern then
             return true
           end
-          -- Handle patterns with wildcards (like *.egg-info)
-          if pattern:find("*", 1, true) then
-            local regex = "^" .. pattern:gsub("%.", "%%."):gsub("*", ".*") .. "$"
-            if name:match(regex) then
-              return true
-            end
-          end
         end
         return false
       end,

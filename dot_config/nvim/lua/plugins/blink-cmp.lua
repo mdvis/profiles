@@ -5,12 +5,7 @@ return {
   opts = {
     keymap = { preset = "super-tab" },
     appearance = { nerd_font_variant = "mono" },
-    snippets = { preset = "default" },
     completion = {
-      trigger = {
-        show_on_trigger_character = true,
-        show_on_keyword = true,
-      },
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 200,

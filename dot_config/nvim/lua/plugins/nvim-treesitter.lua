@@ -40,8 +40,10 @@ return {
       require("nvim-treesitter.install").install(missing, { summary = true })
     end
 
-    -- 启用 treesitter 高亮与缩进（Neovim 0.10+ 内建 vim.treesitter.start）
+    -- 启用 treesitter 高亮（Neovim 0.10+ 内建 vim.treesitter.start）
     -- runtime 仅对部分 filetype 自动启动，这里显式覆盖所有带 parser 的 filetype
+    -- 注：vim.treesitter.start 只启用高亮，不启用 TS 缩进。
+    -- 若需 TS 缩进，在 callback 中追加：vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     vim.api.nvim_create_autocmd("FileType", {
       group = vim.api.nvim_create_augroup("UserTreesitter", { clear = true }),
       callback = function(args)

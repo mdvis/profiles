@@ -12,7 +12,7 @@ return {
     -- Options related to notification subsystem
     notification = {
       window = {
-        winblend = 0, -- Transparent background
+        winblend = 0, -- 0=完全不透明, 100=完全透明
       },
     },
   },
