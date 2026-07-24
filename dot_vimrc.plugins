@@ -17,15 +17,14 @@ scriptencoding utf-8
         Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
 
         Plug 'tpope/vim-surround'
-        Plug 'Raimondi/delimitMate'              " Auto-close quotes/brackets
+        Plug 'jiangmiao/auto-pairs'            " Auto-close quotes/brackets
 
         Plug 'junegunn/vim-easy-align'
 
-        Plug 'ap/vim-css-color'
+        Plug 'RRethy/vim-hexokinase', { 'do': 'make hex_bin' }
 
         " Status/Tabline {
             Plug 'vim-airline/vim-airline'
-            Plug 'vim-airline/vim-airline-themes'
         " }
 
         " Snippet {
@@ -37,10 +36,10 @@ scriptencoding utf-8
         " }
 
         " File {
-            Plug 'preservim/nerdtree'
+            Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
             Plug 'tpope/vim-commentary'
             Plug 'ryanoasis/vim-devicons'
-            Plug 'Xuyuanp/nerdtree-git-plugin'  " Status/Flags
+            Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }  " Status/Flags
         " }
 
         " Search {
@@ -51,7 +50,7 @@ scriptencoding utf-8
         " }
 
         " Navigation {
-            Plug 'easymotion/vim-easymotion'
+            Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion-overwin-f2)' }
         " }
 
         " Syntax and Fix {
@@ -82,21 +81,28 @@ scriptencoding utf-8
     call plug#end()
 " Plugins End }
 
+" Lazy-load triggers {
+"   - nerdtree / nerdtree-git-plugin / easymotion: lazy via `on` above
+"   - editorconfig / vim-rooter / ale: load on first file open
+"   - indentline: load on first FileType event
+"   - augment: load on first InsertEnter (before <leader>y is pressed)
+    augroup PlugLazyLoad
+        autocmd!
+        autocmd BufReadPre  * ++once call plug#load('editorconfig-vim', 'vim-rooter', 'ale')
+        autocmd FileType   * ++once call plug#load('indentline')
+        autocmd InsertEnter * ++once call plug#load('augment.vim')
+    augroup END
+" }
+
 " Plugin Config Start {
     " Coc.nvim {
         set completeopt=menu,menuone,preview
         set signcolumn=auto
 
-        " Unified Tab handler: completion nav + delimitMate jump + snippet
+        " Unified Tab handler: completion nav + fallback
         function! s:smart_tab() abort
             if pumvisible()
                 return "\<C-n>"
-            endif
-            if exists('*delimitMate#JumpAny')
-                let l:dm = delimitMate#JumpAny()
-                if l:dm !=# ''
-                    return "\<C-R>=delimitMate#JumpAny()\<CR>"
-                endif
             endif
             return "\<TAB>"
         endfunction
@@ -148,8 +154,8 @@ scriptencoding utf-8
                     \ ]
     " }
 
-    " delimitMate {
-        let g:delimitMate_tab2exit = 0  " Disable Tab mapping, handled by smart_tab()
+    " auto-pairs {
+        let g:AutoPairsMapCR = 0  " Don't map <CR>; coc <CR> confirm handles it
     " }
 
     " NerdTree {
