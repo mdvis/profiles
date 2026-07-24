@@ -85,7 +85,7 @@ scriptencoding utf-8
 " Plugin Config Start {
     " Coc.nvim {
         set completeopt=menu,menuone,preview
-        set signcolumn=yes
+        set signcolumn=auto
 
         " Unified Tab handler: completion nav + delimitMate jump + snippet
         function! s:smart_tab() abort
@@ -129,8 +129,8 @@ scriptencoding utf-8
         nmap <leader>cn <Plug>(coc-rename)
 
         " Format selected region
-        xmap <leader>cf  <Plug>(coc-format-selected)
-        nmap <leader>cf  <Plug>(coc-format-selected)
+        xmap <leader>cf  :ALEFix<CR>
+        nmap <leader>cf  :ALEFix<CR>
 
         " CoC extensions (install with :CocInstall)
         let g:coc_global_extensions = [
