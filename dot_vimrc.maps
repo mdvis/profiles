@@ -40,7 +40,10 @@ scriptencoding utf-8
     " }
 
     " Sneak {
-        nmap s <Plug>(sneak-s)
+        nmap s <Plug>Sneak_s
+        nmap S <Plug>Sneak_S
+        xmap s <Plug>Sneak_s
+        xmap S <Plug>Sneak_S
     " }
 
     " TPL {

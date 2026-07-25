@@ -50,7 +50,7 @@ scriptencoding utf-8
         " }
 
         " Navigation {
-            Plug 'justinmk/vim-sneak', { 'on': '<Plug>(sneak-s)' }
+            Plug 'justinmk/vim-sneak', { 'on': ['<Plug>Sneak_s', '<Plug>Sneak_S'] }
         " }
 
         " Syntax and Fix {
