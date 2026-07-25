@@ -277,7 +277,8 @@ scriptencoding utf-8
     " }
 
     " Go {
-        let g:go_def_mode='gopls'
-        let g:go_info_mode='gopls'
+        " LSP (gopls) 交给 coc-go 提供，vim-go 不再自启 gopls，
+        " 避免与 coc-go 同时启动两个 gopls 进程争抢。
+        " vim-go 仅保留语法高亮 / 片段 / :GoBuild 等工具命令。
     " }
 " Plugin Config End }
