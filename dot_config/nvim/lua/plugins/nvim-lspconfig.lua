@@ -37,7 +37,7 @@ return {
       severity_sort = true,
       float = {
         border = "rounded",
-        source = "always",
+        source = true,
         header = "",
         prefix = "",
       },
@@ -84,8 +84,12 @@ return {
         vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
 
         -- Diagnostics (0.11+ API: vim.diagnostic.jump 取代 goto_prev/next)
-        vim.keymap.set("n", "[d", function() vim.diagnostic.jump { count = -1, float = true } end, vim.tbl_extend("force", opts, { desc = "Previous diagnostic" }))
-        vim.keymap.set("n", "]d", function() vim.diagnostic.jump { count = 1, float = true } end, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
+        vim.keymap.set("n", "[d", function()
+          vim.diagnostic.jump({ count = -1, float = true })
+        end, vim.tbl_extend("force", opts, { desc = "Previous diagnostic" }))
+        vim.keymap.set("n", "]d", function()
+          vim.diagnostic.jump({ count = 1, float = true })
+        end, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
         vim.keymap.set(
           "n",
           "<leader>d",
