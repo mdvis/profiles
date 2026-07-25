@@ -130,10 +130,6 @@ scriptencoding utf-8
         " Symbol renaming
         nmap <leader>cn <Plug>(coc-rename)
 
-        " Format selected region
-        xmap <leader>cf  :ALEFix<CR>
-        nmap <leader>cf  :ALEFix<CR>
-
         " CoC extensions (install with :CocInstall)
         let g:coc_global_extensions = [
                     \ 'coc-json',
@@ -202,6 +198,10 @@ scriptencoding utf-8
         let g:ale_lint_on_enter=0 " 1
         let g:ale_lint_on_insert_leave=0  " 诊断交给 coc，ale 不做 lint
         let g:ale_lint_on_save=0          " 同上
+
+        " Format selected region (走 ALE fixer)
+        xmap <leader>cf  :ALEFix<CR>
+        nmap <leader>cf  :ALEFix<CR>
 
         let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
         let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
