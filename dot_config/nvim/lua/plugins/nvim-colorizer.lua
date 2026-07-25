@@ -9,16 +9,18 @@ return {
   },
   opts = {
     filetypes = { "*" }, -- Enable for all filetypes
-    user_default_options = {
-      RGB = true,      -- #RGB hex codes
-      RRGGBB = true,   -- #RRGGBB hex codes
-      names = true,    -- "Name" codes like Blue
-      RRGGBBAA = true, -- #RRGGBBAA hex codes
-      rgb_fn = true,   -- CSS rgb() and rgba() functions
-      hsl_fn = true,   -- CSS hsl() and hsla() functions
-      css = true,      -- Enable all CSS features
-      css_fn = true,   -- Enable all CSS *functions*
-      mode = "background", -- Set the display mode (foreground/background/virtualtext)
+    options = {
+      parsers = {
+        hex = { default = true }, -- #RGB, #RRGGBB, #RRGGBBAA
+        names = { enable = true }, -- "Name" codes like Blue
+        rgb = { enable = true }, -- CSS rgb() and rgba() functions
+        hsl = { enable = true }, -- CSS hsl() and hsla() functions
+        css = { enable = true }, -- Enable all CSS features
+        css_fn = { enable = true }, -- Enable all CSS *functions*
+      },
+      display = {
+        mode = "background", -- foreground | background | underline | virtualtext
+      },
     },
   },
 }
