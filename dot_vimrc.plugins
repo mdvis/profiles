@@ -74,10 +74,6 @@ scriptencoding utf-8
         " Git {
             Plug 'tpope/vim-fugitive', { 'on': ['G', 'Gdiffsplit', 'Gblame'] }
         " }
-
-        " Augment {
-            Plug 'augmentcode/augment.vim'
-        " }
     " }
 
     call plug#end()
@@ -91,7 +87,6 @@ scriptencoding utf-8
         autocmd!
         autocmd BufReadPre  * ++once call plug#load('editorconfig-vim', 'vim-rooter', 'ale')
         autocmd FileType   * ++once call plug#load('indentline')
-        autocmd InsertEnter * ++once call plug#load('augment.vim')
     augroup END
 " }
 
