@@ -155,7 +155,7 @@ scriptencoding utf-8
 
     " NerdTree {
         let g:NERDTreeWinSize=40
-        let g:NERDTreeChDirMode=1
+        let g:NERDTreeChDirMode=0  " cwd 完全交给 vim-rooter，避免两边争抢
         let g:NERDTreeMouseMode=2
         let g:NERDTreeQuitOnOpen=1
         let g:NERDTreeShowHidden=1
