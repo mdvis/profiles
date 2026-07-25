@@ -50,8 +50,6 @@ scriptencoding utf-8
         " }
 
         " Navigation {
-            " vim-sneak: 轻量、vim/neovim 通用、justinmk(neovim 核心成员) 仍在维护
-            " 替代已停更的 vim-easymotion；s{char}{char} 跳转用法保持一致
             Plug 'justinmk/vim-sneak', { 'on': '<Plug>(sneak-s)' }
         " }
 
@@ -80,12 +78,6 @@ scriptencoding utf-8
 " Plugins End }
 
 " Lazy-load triggers {
-"   - nerdtree / nerdtree-git-plugin / sneak: lazy via `on` above
-"   - editorconfig / vim-rooter / ale: load on first file open
-"   - indentline: load on first FileType event
-"   注：去掉 ++once，改用 BufRead,BufNew / FileType 持续触发 ——
-"   plug#load 对已加载插件是无操作，重复调用安全。
-"   这样会话恢复 / :e 已加载 buffer 时也能补加载，避免首次保存来不及 fix。
     augroup PlugLazyLoad
         autocmd!
         autocmd BufRead,BufNew * call plug#load('editorconfig-vim', 'vim-rooter', 'ale')
@@ -150,12 +142,12 @@ scriptencoding utf-8
     " }
 
     " auto-pairs {
-        let g:AutoPairsMapCR = 0  " Don't map <CR>; coc <CR> confirm handles it
+        let g:AutoPairsMapCR = 0
     " }
 
     " NerdTree {
         let g:NERDTreeWinSize=40
-        let g:NERDTreeChDirMode=0  " cwd 完全交给 vim-rooter，避免两边争抢
+        let g:NERDTreeChDirMode=0  " cwd 交给 vim-rooter
         let g:NERDTreeMouseMode=2
         let g:NERDTreeQuitOnOpen=1
         let g:NERDTreeShowHidden=1
@@ -202,7 +194,6 @@ scriptencoding utf-8
         let g:ale_lint_on_insert_leave=0  " 诊断交给 coc，ale 不做 lint
         let g:ale_lint_on_save=0          " 同上
 
-        " Format selected region (走 ALE fixer)
         xmap <leader>cf  :ALEFix<CR>
         nmap <leader>cf  :ALEFix<CR>
 
@@ -250,8 +241,7 @@ scriptencoding utf-8
                     \   'xml':['xmllint'],
                     \   'yaml':['prettier']}
 
-        " 诊断统一交给 coc (coc-settings.json: diagnostic.enable=true)
-        " ALE 仅保留 fixer 职责，不启用任何 linter
+        " ALE 仅保留 fixer 职责，不启用任何 linter，诊断统一交给 coc
         let g:ale_linters = {}
     " }
 
@@ -279,9 +269,4 @@ scriptencoding utf-8
         let g:rooter_ignore = 1
     " }
 
-    " Go {
-        " LSP (gopls) 交给 coc-go 提供，vim-go 不再自启 gopls，
-        " 避免与 coc-go 同时启动两个 gopls 进程争抢。
-        " vim-go 仅保留语法高亮 / 片段 / :GoBuild 等工具命令。
-    " }
 " Plugin Config End }
