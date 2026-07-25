@@ -83,10 +83,13 @@ scriptencoding utf-8
 "   - nerdtree / nerdtree-git-plugin / sneak: lazy via `on` above
 "   - editorconfig / vim-rooter / ale: load on first file open
 "   - indentline: load on first FileType event
+"   注：去掉 ++once，改用 BufRead,BufNew / FileType 持续触发 ——
+"   plug#load 对已加载插件是无操作，重复调用安全。
+"   这样会话恢复 / :e 已加载 buffer 时也能补加载，避免首次保存来不及 fix。
     augroup PlugLazyLoad
         autocmd!
-        autocmd BufReadPre  * ++once call plug#load('editorconfig-vim', 'vim-rooter', 'ale')
-        autocmd FileType   * ++once call plug#load('indentline')
+        autocmd BufRead,BufNew * call plug#load('editorconfig-vim', 'vim-rooter', 'ale')
+        autocmd FileType      * call plug#load('indentline')
     augroup END
 " }
 
