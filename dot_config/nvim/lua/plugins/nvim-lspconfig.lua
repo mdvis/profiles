@@ -221,20 +221,8 @@ return {
       },
     }
 
-    -- All servers to configure & enable (single source of truth)
-    local all_servers = {
-      "bashls",
-      "eslint",
-      "jsonls",
-      "lua_ls",
-      "pyright",
-      "rust_analyzer",
-      "ts_ls",
-      "gopls",
-      "marksman",
-      "taplo",
-      "yamlls",
-    }
+    -- All servers to configure & enable (shared via config.servers)
+    local all_servers = require("config.servers")
 
     -- Apply configs (merge server-specific over default)
     for _, server in ipairs(all_servers) do
