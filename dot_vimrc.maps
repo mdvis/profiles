@@ -43,9 +43,9 @@ scriptencoding utf-8
         nmap <silent> <leader>gs :G<CR>
     " }
 
-    " {
-        " s{char}{char} to move to {char}{char}
-        nmap s <Plug>(easymotion-overwin-f2)
+    " Sneak {
+        " s{char}{char} to move to {char}{char} (vim-sneak, 替代 vim-easymotion)
+        nmap s <Plug>(sneak-s)
     " }
 
     " TPL {

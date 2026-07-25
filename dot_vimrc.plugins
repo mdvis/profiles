@@ -50,7 +50,9 @@ scriptencoding utf-8
         " }
 
         " Navigation {
-            Plug 'easymotion/vim-easymotion', { 'on': '<Plug>(easymotion-overwin-f2)' }
+            " vim-sneak: 轻量、vim/neovim 通用、justinmk(neovim 核心成员) 仍在维护
+            " 替代已停更的 vim-easymotion；s{char}{char} 跳转用法保持一致
+            Plug 'justinmk/vim-sneak', { 'on': '<Plug>(sneak-s)' }
         " }
 
         " Syntax and Fix {
@@ -82,10 +84,9 @@ scriptencoding utf-8
 " Plugins End }
 
 " Lazy-load triggers {
-"   - nerdtree / nerdtree-git-plugin / easymotion: lazy via `on` above
+"   - nerdtree / nerdtree-git-plugin / sneak: lazy via `on` above
 "   - editorconfig / vim-rooter / ale: load on first file open
 "   - indentline: load on first FileType event
-"   - augment: load on first InsertEnter (before <leader>y is pressed)
     augroup PlugLazyLoad
         autocmd!
         autocmd BufReadPre  * ++once call plug#load('editorconfig-vim', 'vim-rooter', 'ale')
