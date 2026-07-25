@@ -2,7 +2,7 @@ vim.opt.termguicolors = true
 vim.opt.mouse = "a"
 -- vim.opt.guioptions = ""
 vim.opt.hidden = true
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.viewoptions = "folds,options,cursor,unix,slash"
 
 vim.opt.shortmess:append("a")
