@@ -200,7 +200,8 @@ scriptencoding utf-8
 
         let g:ale_fix_on_save=1
         let g:ale_lint_on_enter=0 " 1
-        let g:ale_lint_on_insert_leave=1
+        let g:ale_lint_on_insert_leave=0  " 诊断交给 coc，ale 不做 lint
+        let g:ale_lint_on_save=0          " 同上
 
         let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
         let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
@@ -246,41 +247,9 @@ scriptencoding utf-8
                     \   'xml':['xmllint'],
                     \   'yaml':['prettier']}
 
-        let g:ale_linters = {
-                    \   'sql':['sqlfluff'],
-                    \   'c':['cc','gcc','clang', 'clangd'],
-                    \   'cmake':['cmake-lint'],
-                    \   'cpp':['cc','gcc','clang', 'clangd'],
-                    \   'css':['stylelint'],
-                    \   'dockerfile':['hadolint'],
-                    \   'gitcommit':['gitlint'],
-                    \   'glsl':['glslang'],
-                    \   'go':['gopls'],
-                    \   'gohtmltmpl':['djlint'],
-                    \   'graphqls':['eslint'],
-                    \   'html':['alex'],
-                    \   'jsx':['eslint'],
-                    \   'tsx':['eslint'],
-                    \   'java':['checkstyle'],
-                    \   'javascript':['biome', 'eslint'],
-                    \   'javascriptreact':['biome', 'eslint'],
-                    \   'typescriptreact':['biome', 'eslint'],
-                    \   'typescript':['biome', 'eslint'],
-                    \   'jsonc':['biome', 'eslint'],
-                    \   'json':['biome', 'eslint'],
-                    \   'less':['stylelint'],
-                    \   'lua':['luac'],
-                    \   'markdown':['alex'],
-                    \   'python':['ruff'],
-                    \   'r':['lintr'],
-                    \   'rust':['analyzer', 'cargo', 'rustc'],
-                    \   'scss':['stylelint'],
-                    \   'sh':['shellcheck'],
-                    \   'swift':['swiftlint'],
-                    \   'vim':['vint'],
-                    \   'vue':['eslint', 'vls'],
-                    \   'xml':['xmllint'],
-                    \   'yaml':['yamllint']}
+        " 诊断统一交给 coc (coc-settings.json: diagnostic.enable=true)
+        " ALE 仅保留 fixer 职责，不启用任何 linter
+        let g:ale_linters = {}
     " }
 
     " Nerdtree syntax highlight {
