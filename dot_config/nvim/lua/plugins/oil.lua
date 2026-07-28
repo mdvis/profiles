@@ -4,6 +4,15 @@ return {
   ---@type oil.SetupOpts
   opts = {
     skip_confirm_for_simple_edits = true,
+    float = {
+      padding = 2,
+      max_width = 0.8,
+      max_height = 0.8,
+      border = "rounded",
+      win_options = {
+        winblend = 0,
+      },
+    },
     view_options = {
       show_hidden = true,
       is_hidden_file = function(name, bufnr)
@@ -63,6 +72,6 @@ return {
   -- Optional dependencies
   dependencies = { { "nvim-tree/nvim-web-devicons", opts = {} } },
   keys = {
-    { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
+    { "-", "<CMD>Oil --float<CR>", desc = "Open parent directory (float)" },
   },
 }
