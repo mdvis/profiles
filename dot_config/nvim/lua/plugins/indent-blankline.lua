@@ -18,6 +18,7 @@ return {
         "dashboard",
         "oil",
         "trouble",
+        "NvimTree",
         "lazy",
         "mason",
         "notify",
