@@ -7,6 +7,9 @@
 .config/foot/
 .config/i3/
 .config/X11/
+
+.Xmodmap
+.Xresources
 {{- end }}
 
 .DS_Store
