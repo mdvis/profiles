@@ -1,28 +1,27 @@
 # espanso match file
-
 ---
-
 matches:
-  - trigger: ":uuid"
-    replace: "{{uuid}}"
+  - trigger: ':cgcz'
+    replace: '分析  词根词缀，给出常用释义、美式音标等；回答要保证准确的同时尽量简练。'
+
+  - trigger: ':uuid'
+    replace: '{{uuid}}'
     vars:
       - name: uuid
         type: shell
         params:
           cmd: "uuidgen | tr 'A-Z' 'a-z'"
 
-
-  - trigger: ":date"
-    replace: "{{mydate}}"
+  - trigger: ':date'
+    replace: '{{mydate}}'
     vars:
       - name: mydate
         type: date
         params:
-          format: "%m/%d/%Y"
+          format: '%m/%d/%Y'
 
-
-  - trigger: ":shell"
-    replace: "{{output}}"
+  - trigger: ':shell'
+    replace: '{{output}}'
     vars:
       - name: output
         type: shell
