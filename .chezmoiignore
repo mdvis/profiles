@@ -12,4 +12,8 @@
 .Xresources
 {{- end }}
 
+{{- if ne .chezmoi.os "darwin" }}
+Library/Application Support/espanso/match
+{{- end }}
+
 .DS_Store
