@@ -7,18 +7,18 @@ list=$(
 )
 
 echo "$list" | while IFS= read -r dir; do
-	cd "${dir}" || {
-		echo "${dir}: cd failed" >&2
-		continue
-	}
+	cd "${dir}" || exit
+
 	[ -d ".git" ] || continue
+
 	if [ -n "$(git status --porcelain 2>/dev/null)" ]; then
-		echo "${dir} skip (local changes)" >&2
+		printf '\033[33m[skip]\033[0m %s\n' "${dir}" >&2
 		continue
 	fi
+
 	if git fetch origin >/dev/null 2>&1 && git remote prune origin >/dev/null 2>&1 && git reset --hard "origin/$(git rev-parse --abbrev-ref HEAD)" >/dev/null 2>&1; then
-		echo "${dir} ok"
+		printf '\033[32m[ok  ]\033[0m %s\n' "${dir}"
 	else
-		echo "${dir} err" >&2
+		printf '\033[31m[err ]\033[0m %s\n' "${dir}" >&2
 	fi
 done
