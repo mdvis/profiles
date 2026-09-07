@@ -5,7 +5,7 @@ openrouter() {
   export ANTHROPIC_AUTH_TOKEN=$OPENROUTER_KEY
   export ANTHROPIC_BASE_URL=https://openrouter.ai/api
 
-  export MODLE=poolside/laguna-xs-2.1:free
+  export MODLE=inclusionai/ling-3.0-flash-fin:free
 
   export CURRENT_MODEL_OPUS=$MODLE
   export CURRENT_MODEL_SONNET=$MODLE
