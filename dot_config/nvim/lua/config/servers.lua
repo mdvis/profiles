@@ -5,7 +5,7 @@ return {
   "eslint",
   "jsonls",
   "lua_ls",
-  "pyright",
+  "basedpyright",
   "rust_analyzer",
   "ts_ls",
   "gopls",

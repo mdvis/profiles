@@ -120,8 +120,6 @@ return {
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, vim.tbl_extend("force", opts, { desc = "List workspace folders" }))
 
-        -- Inlay hints：nvim 默认关闭（vim.lsp.inlay_hint.is_enabled() == false），
-        -- 不开启的话 pyright/ts_ls 的 inlayHints settings 只是死配置
         vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
       end,
     })
@@ -177,7 +175,8 @@ return {
           },
         },
       },
-      pyright = {
+      -- basedpyright：pyright 分支，补齐开源版缺失的 inlay hints
+      basedpyright = {
         before_init = function(_, config)
           -- 自动检测并使用项目的虚拟环境
           -- 基准取 project root（root_dir 由 lspconfig 按 pyrightconfig.json/
@@ -200,12 +199,22 @@ return {
           end
         end,
         settings = {
-          python = {
+          python = {}, -- pythonPath 由 before_init 注入
+          basedpyright = {
             analysis = {
-              typeCheckingMode = "standard",
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-              diagnosticMode = "workspace", -- 新增：工作区级别诊断
+              -- recommended（basedpyright 默认档）＝ strict + reportAny/reportExplicitAny
+              -- 等基于 2026-09-17 实测对比选定；真实项目报错过多可退回 strict
+              typeCheckingMode = "recommended",
+              diagnosticMode = "workspace", -- 工作区级别诊断
+              -- autoSearchPaths 默认 true；useLibraryCodeForTypes 不显式设置，
+              -- 以免覆盖项目级 pyproject.toml 配置（basedpyright 官方建议）
+            },
+            -- 开源 pyright 无 inlay hints，这里补齐
+            inlayHints = {
+              variableTypes = true, -- 变量推断类型
+              callArgumentNames = true, -- 调用处参数名
+              functionReturnTypes = true, -- 函数返回类型
+              pytestParameters = true, -- pytest fixture 参数名
             },
           },
         },
