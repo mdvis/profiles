@@ -194,7 +194,7 @@ return {
         settings = {
           python = {
             analysis = {
-              typeCheckingMode = "basic",
+              typeCheckingMode = "standard",
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
               diagnosticMode = "workspace", -- 新增：工作区级别诊断
