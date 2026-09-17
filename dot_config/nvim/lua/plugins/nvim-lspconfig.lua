@@ -176,10 +176,14 @@ return {
       pyright = {
         before_init = function(_, config)
           -- 自动检测并使用项目的虚拟环境
+          -- 基准取 project root（root_dir 由 lspconfig 按 pyrightconfig.json/
+          -- pyproject.toml/.git 等标记解析），而非 nvim 的 cwd：
+          -- 从项目外打开文件时 cwd 不在项目内，会漏检项目 venv
+          local base = config.root_dir or vim.fn.getcwd()
           local venv_paths = {
-            vim.fn.getcwd() .. "/.venv", -- uv/poetry 标准目录
-            vim.fn.getcwd() .. "/venv", -- virtualenv 标准目录
-            vim.env.VIRTUAL_ENV, -- 激活的虚拟环境
+            base .. "/.venv", -- uv/poetry 标准目录
+            base .. "/venv", -- virtualenv 标准目录
+            vim.env.VIRTUAL_ENV, -- 兜底：当前激活的虚拟环境
           }
 
           for _, venv_path in ipairs(venv_paths) do
