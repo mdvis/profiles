@@ -119,6 +119,10 @@ return {
         vim.keymap.set("n", "<leader>lwl", function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, vim.tbl_extend("force", opts, { desc = "List workspace folders" }))
+
+        -- Inlay hints：nvim 默认关闭（vim.lsp.inlay_hint.is_enabled() == false），
+        -- 不开启的话 pyright/ts_ls 的 inlayHints settings 只是死配置
+        vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
       end,
     })
 
