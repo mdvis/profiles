@@ -264,8 +264,7 @@ return {
             cargo = {
               allFeatures = true,
             },
-            -- checkOnSave 已弃用，改用 check.enable（rust-analyzer 最新版）
-            check = { enable = false },
+            check = { enable = true, command = "clippy" },
           },
         },
       },

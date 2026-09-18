@@ -16,7 +16,6 @@ return {
 
     local preferred_by_ft = {
       go = { { "golangcilint", "golangci-lint" } },
-      rust = { { "clippy", "cargo" } },
       python = { { "ruff", "ruff" } },
       lua = { { "luacheck", "luacheck" } },
       sh = { { "shellcheck", "shellcheck" } },
