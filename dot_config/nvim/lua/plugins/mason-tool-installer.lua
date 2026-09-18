@@ -8,7 +8,6 @@ return {
       "gofumpt",
       "goimports",
       "golangci-lint",
-      "luacheck",
       "markdownlint-cli2",
       "prettierd",
       "ruff",

@@ -17,7 +17,6 @@ return {
     local preferred_by_ft = {
       go = { { "golangcilint", "golangci-lint" } },
       python = { { "ruff", "ruff" } },
-      lua = { { "luacheck", "luacheck" } },
       sh = { { "shellcheck", "shellcheck" } },
       bash = { { "shellcheck", "shellcheck" } },
       sql = { { "sqlfluff", "sqlfluff" } },
