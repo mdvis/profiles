@@ -27,8 +27,8 @@ return {
       yaml = { { "yamllint", "yamllint" } },
     }
 
-    -- stylelint 只有在项目内装了本地依赖时才启用：配置与其 extends 的包都从文件所在目录解析，
-    -- 否则会退到家目录的 .stylelintrc.json 并因缺 stylelint-config-standard 而每次保存报错
+    -- stylelint 只在项目内装了本地依赖时才启用：配置与其 extends 的包都从文件所在目录解析，
+    -- 依赖缺失会直接报 ConfigurationError（项目模板放在 ~/.config/stylelint/.stylelintrc.json）
     local function project_stylelint(bufnr)
       local name = vim.api.nvim_buf_get_name(bufnr)
       local dir = name ~= "" and vim.fs.dirname(name) or vim.fn.getcwd()
