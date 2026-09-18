@@ -8,6 +8,7 @@ return {
   "basedpyright",
   "rust_analyzer",
   "ts_ls",
+  "vue_ls",
   "gopls",
   "marksman",
   "taplo",

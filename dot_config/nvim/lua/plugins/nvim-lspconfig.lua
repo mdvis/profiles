@@ -23,6 +23,23 @@ return {
 
     local capabilities = get_capabilities()
 
+    -- Volar 3.x 起 vue_ls 不再支持 takeover 模式，只负责 .vue 的 template/style；
+    -- <script> 里的 TS 能力必须由 ts_ls 加载 @vue/typescript-plugin 提供（hybrid 模式）。
+    -- 插件随 mason 的 vue-language-server 包一起下发，路径不存在时降级为普通 ts_ls。
+    local vue_ts_plugin = vim.fn.stdpath("data")
+      .. "/mason/packages/vue-language-server/node_modules/@vue/typescript-plugin"
+    local ts_plugins = {}
+    if vim.fn.isdirectory(vue_ts_plugin) == 1 then
+      ts_plugins = {
+        { name = "@vue/typescript-plugin", location = vue_ts_plugin, languages = { "vue" } },
+      }
+    else
+      vim.notify(
+        "未找到 @vue/typescript-plugin，.vue 内的 TS 补全将不可用：" .. vue_ts_plugin,
+        vim.log.levels.WARN
+      )
+    end
+
     -- Diagnostic configuration
     vim.diagnostic.config({
       virtual_text = {
@@ -150,6 +167,18 @@ return {
         },
       },
       ts_ls = {
+        -- 追加 vue：ts_ls 必须同时附着到 .vue buffer，vue_ls 才能把 tsserver 请求转发过来
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "vue",
+        },
+        init_options = {
+          hostInfo = "neovim",
+          plugins = ts_plugins,
+        },
         settings = {
           typescript = {
             inlayHints = {
