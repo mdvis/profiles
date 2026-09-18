@@ -3,7 +3,7 @@
     email = xnmageis@outlook.com
     signingkey = 1031458D
 [core]
-    editor = vim
+    editor = nvim
     excludesfile = ~/.gitignore_global
     autocrlf = input
     safecrlf = true
