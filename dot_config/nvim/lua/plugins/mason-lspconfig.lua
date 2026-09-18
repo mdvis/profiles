@@ -12,6 +12,6 @@ return {
       end
       return list
     end)(),
-    automatic_enable = false, -- enable 由 nvim-lspconfig.lua 统一调用 vim.lsp.enable()
+    automatic_enable = false,
   },
 }
