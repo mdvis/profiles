@@ -148,6 +148,10 @@ return {
 
     -- Server-specific configurations
     local servers = {
+      bashls = {
+        -- 默认 filetypes 只有 bash/sh，追加 zsh；vim.lsp.config 合并时列表按索引覆盖，需写全
+        filetypes = { "bash", "sh", "zsh" },
+      },
       lua_ls = {
         settings = {
           Lua = {
