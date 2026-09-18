@@ -8,7 +8,19 @@ return {
     "ColorizerToggle",
   },
   opts = {
-    filetypes = { "*" }, -- Enable for all filetypes
+    -- 只在会出现色值的文件类型启用，避免对日志等大文件做无意义的扫描
+    filetypes = {
+      "css",
+      "scss",
+      "less",
+      "html",
+      "vue",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "lua",
+    },
     options = {
       parsers = {
         hex = { default = true }, -- #RGB, #RRGGBB, #RRGGBBAA
