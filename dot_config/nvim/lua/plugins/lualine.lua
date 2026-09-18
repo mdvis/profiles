@@ -8,9 +8,6 @@ return {
       component_separators = { left = "|", right = "|" },
       section_separators = { left = "", right = "" },
       globalstatus = true, -- single statusline for all windows
-      disabled_filetypes = {
-        statusline = { "alpha" },
-      },
     },
     sections = {
       lualine_a = { "mode" },
