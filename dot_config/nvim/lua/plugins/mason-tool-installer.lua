@@ -15,6 +15,7 @@ return {
       "shellcheck",
       "shfmt",
       "stylua",
+      "taplo",
       "yamllint",
     },
     auto_update = false,
