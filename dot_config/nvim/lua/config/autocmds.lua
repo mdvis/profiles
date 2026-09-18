@@ -90,7 +90,16 @@ vim.api.nvim_create_user_command("SetTpl", set_tpl, {})
 autocmd("BufEnter", {
   group = augroup("tpl", { clear = true }),
   callback = function()
-    if vim.bo.buftype == "" and vim.fn.line("$") == 1 and vim.fn.getline(1) == "" then
+    -- 只在真正的新文件上插模板：BufEnter 时 filetype 已就绪，
+    -- 用 filereadable 判断文件是否已存在，避免给"已存在的空文件"也加头
+    local path = vim.fn.expand("%:p")
+    if
+      vim.bo.buftype == ""
+      and path ~= ""
+      and vim.fn.filereadable(path) == 0
+      and vim.fn.line("$") == 1
+      and vim.fn.getline(1) == ""
+    then
       set_tpl()
     end
   end,
