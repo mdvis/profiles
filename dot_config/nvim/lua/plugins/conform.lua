@@ -36,6 +36,7 @@ return {
       typescript = { "prettierd", "prettier", stop_after_first = true },
       typescriptreact = { "prettierd", "prettier", stop_after_first = true },
       vue = { "prettierd", "prettier", stop_after_first = true },
+      sql = { "sql_formatter" },
       json = { "prettierd", "prettier", stop_after_first = true },
       jsonc = { "prettierd", "prettier", stop_after_first = true },
       yaml = { "prettierd", "prettier", stop_after_first = true },

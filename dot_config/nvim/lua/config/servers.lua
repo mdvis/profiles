@@ -10,6 +10,7 @@ return {
   "ts_ls",
   "vue_ls",
   "gopls",
+  "sqls",
   "marksman",
   "taplo",
   "yamlls",
