@@ -49,7 +49,7 @@ return {
     },
     formatters = {
       rustfmt = {
-        args = { "--edition=2021" },
+        options = { default_edition = "2024" },
       },
     },
     format_on_save = function(bufnr)
