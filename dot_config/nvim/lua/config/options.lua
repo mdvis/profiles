@@ -53,7 +53,7 @@ vim.opt.fileformats = { "unix", "dos", "mac" }
 
 vim.opt.backup = true
 vim.opt.swapfile = true
-vim.opt.updatetime = 2000
+vim.opt.updatetime = 300
 vim.opt.updatecount = 100
 vim.opt.writebackup = true
 vim.opt.undofile = true
