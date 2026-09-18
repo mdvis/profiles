@@ -20,7 +20,6 @@ return {
       sh = { { "shellcheck", "shellcheck" } },
       bash = { { "shellcheck", "shellcheck" } },
       sql = { { "sqlfluff", "sqlfluff" } },
-      zsh = { { "shellcheck", "shellcheck" } },
       markdown = { { "markdownlint-cli2", "markdownlint-cli2" }, { "markdownlint", "markdownlint" } },
       yaml = { { "yamllint", "yamllint" } },
     }
