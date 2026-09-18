@@ -3,15 +3,7 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
   opts = {
-    ensure_installed = (function()
-      local list = {}
-      for _, server in ipairs(require("config.servers")) do
-        if server ~= "sqls" then
-          list[#list + 1] = server
-        end
-      end
-      return list
-    end)(),
+    ensure_installed = require("config.servers"),
     automatic_enable = false,
   },
 }

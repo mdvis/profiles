@@ -13,8 +13,4 @@ return {
   "cssls",
   "emmet_language_server",
   "gopls",
-  "sqls",
-  "marksman",
-  "taplo",
-  "yamlls",
 }
