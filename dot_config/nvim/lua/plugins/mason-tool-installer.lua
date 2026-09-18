@@ -11,6 +11,7 @@ return {
       "markdownlint-cli2",
       "prettierd",
       "ruff",
+      "sql-formatter",
       "shellcheck",
       "shfmt",
       "stylua",
