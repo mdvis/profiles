@@ -7,10 +7,12 @@ return {
     -- 需要安装的 parser 列表
     local ensure_installed = {
       "bash",
+      "css",
       "go",
       "gomod",
       "gosum",
       "gowork",
+      "html",
       "javascript",
       "jsdoc",
       "json",
@@ -21,6 +23,7 @@ return {
       "python",
       "regex",
       "rust",
+      "scss",
       "sql",
       "toml",
       "tsx",
