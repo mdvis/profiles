@@ -3,7 +3,7 @@ return {
   cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
   keys = {
     { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer (NvimTree)" },
-    { "<leader>ge", "<cmd>NvimTreeFindFile<cr>", desc = "Find file in NvimTree" },
+    { "<leader>fe", "<cmd>NvimTreeFindFile<cr>", desc = "Find file in explorer" },
   },
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {

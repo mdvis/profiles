@@ -4,6 +4,11 @@ return {
   ---@type oil.SetupOpts
   opts = {
     skip_confirm_for_simple_edits = true,
+    keymaps = {
+      -- 让位给 smart-splits 的窗口导航；<C-p> preview 保留
+      ["<C-h>"] = false,
+      ["<C-l>"] = false,
+    },
     float = {
       padding = 2,
       max_width = 0.8,
