@@ -13,11 +13,6 @@ return {
       if ok and blink.get_lsp_capabilities then
         caps = blink.get_lsp_capabilities(caps)
       end
-      -- Add folding capabilities for nvim-ufo
-      caps.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-      }
       return caps
     end
 

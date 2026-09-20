@@ -25,8 +25,13 @@ vim.opt.softtabstop = 4
 vim.opt.whichwrap = "b,s,<,>,[,]"
 vim.opt.backspace = "indent,eol,start"
 vim.opt.formatoptions = "tqmM"
--- vim.opt.foldmethod = "indent"
--- vim.opt.foldenable = false
+-- 折叠：内置 treesitter foldexpr（替代已移除的 nvim-ufo）
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldenable = true
+vim.opt.foldcolumn = "1"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.autoindent = true
