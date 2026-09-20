@@ -1,0 +1,20 @@
+set nu
+
+syntax on
+
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
+set smartcase
+set ignorecase
+
+set incsearch
+set hlsearch
+
+set ruler
+
+set showmatch
+
+set encoding=utf-8
+set fileencodings=utf-8,gbk,gbk2312
