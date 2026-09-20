@@ -82,7 +82,7 @@ return {
         )
         vim.keymap.set(
           "n",
-          "gt",
+          "gy",
           vim.lsp.buf.type_definition,
           vim.tbl_extend("force", opts, { desc = "Go to type definition" })
         )

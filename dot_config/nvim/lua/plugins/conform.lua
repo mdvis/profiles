@@ -20,7 +20,7 @@ return {
   event = { "BufWritePre" },
   keys = {
     {
-      "<leader>f",
+      "<leader>cf",
       function()
         require("conform").format({ async = true, lsp_format = "fallback" })
       end,
