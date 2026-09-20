@@ -9,7 +9,7 @@ return {
       javascript = { "template_string" }, -- 在 JS 模板字符串中不自动配对
       java = false, -- 禁用 java 的 treesitter 检查
     },
-    disable_filetype = { "TelescopePrompt", "vim" },
+    disable_filetype = { "vim" },
     disable_in_macro = true, -- 在宏录制时禁用
     disable_in_visualblock = false, -- 在可视块模式下启用
     disable_in_replace_mode = true,
