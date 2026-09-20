@@ -9,7 +9,6 @@ return {
       background = { light = "latte", dark = "mocha" },
       transparent_background = false,
       integrations = {
-        native_lsp = { enabled = true },
         treesitter = true,
         gitsigns = true,
         which_key = true,

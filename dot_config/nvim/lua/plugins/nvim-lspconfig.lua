@@ -81,11 +81,6 @@ return {
           vim.lsp.buf.type_definition,
           vim.tbl_extend("force", opts, { desc = "Go to type definition" })
         )
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Show references" }))
-
-        -- Documentation
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover documentation" }))
-
         -- Code actions
         vim.keymap.set(
           { "n", "v" },
