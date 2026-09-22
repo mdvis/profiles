@@ -14,7 +14,6 @@ return {
         which_key = true,
         mason = true,
         trouble = true,
-        render_markdown = true,
         flash = true,
         mini = { enabled = true },
         fidget = true,
