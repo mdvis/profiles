@@ -1,6 +1,6 @@
 return {
   "mfussenegger/nvim-lint",
-  event = { "BufReadPost", "BufNewFile", "BufWritePost", "InsertLeave" },
+  event = { "BufReadPost", "BufNewFile" },
   config = function()
     local lint = require("lint")
     local function first_available(candidates)
@@ -27,8 +27,6 @@ return {
       yaml = { { "yamllint", "yamllint" } },
     }
 
-    -- stylelint 只在项目内装了本地依赖时才启用：配置与其 extends 的包都从文件所在目录解析，
-    -- 依赖缺失会直接报 ConfigurationError（项目模板放在 ~/.config/stylelint/.stylelintrc.json）
     local function project_stylelint(bufnr)
       local name = vim.api.nvim_buf_get_name(bufnr)
       local dir = name ~= "" and vim.fs.dirname(name) or vim.fn.getcwd()
@@ -38,7 +36,7 @@ return {
     local predicates = { stylelint = project_stylelint }
 
     local group = vim.api.nvim_create_augroup("nvim_lint", { clear = true })
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
       group = group,
       callback = function()
         local bufnr = vim.api.nvim_get_current_buf()
