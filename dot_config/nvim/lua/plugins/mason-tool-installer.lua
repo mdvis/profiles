@@ -12,6 +12,7 @@ return {
       "prettierd",
       "ruff",
       "sql-formatter",
+      "sqlfluff",
       "shellcheck",
       "shfmt",
       "stylua",
