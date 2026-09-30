@@ -137,11 +137,3 @@ autocmd({ "FocusGained", "BufEnter" }, {
     vim.cmd("checktime")
   end,
 })
-
-vim.api.nvim_create_user_command("EConf", function()
-  vim.cmd("edit " .. vim.fn.fnameescape(vim.g.my_nvim_config_dir .. "/init.lua"))
-end, {})
-
-vim.api.nvim_create_user_command("SConf", function()
-  vim.cmd("source " .. vim.fn.fnameescape(vim.g.my_nvim_config_dir .. "/init.lua"))
-end, {})
