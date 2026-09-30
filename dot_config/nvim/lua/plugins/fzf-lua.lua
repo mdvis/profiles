@@ -15,8 +15,8 @@ return {
     fzf_colors = true,
     -- 与原 telescope 配置一致：忽略构建产物与锁文件
     file_ignore_patterns = { "node_modules", "%.lock", "%.git/", "dist", ".venv" },
-    -- fzf-lua 的 files 默认已带 --hidden，显式写出以保持与旧行为一致
-    files = { hidden = true },
+    -- 隐藏文件：hidden 是顶层选项（默认即 true），显式写出以固定行为
+    hidden = true,
     fzf_opts = {
       ["--prompt"] = "🔍 ",
       ["--pointer"] = "➤",
