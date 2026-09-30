@@ -7,8 +7,8 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.shortmess:append("a")
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
-vim.opt.textwidth = 80
 vim.opt.colorcolumn = "80"
+vim.opt.signcolumn = "yes"
 vim.opt.list = true
 vim.opt.listchars = { tab = ">-", trail = "-" }
 vim.opt.showtabline = 2
@@ -23,8 +23,7 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.whichwrap = "b,s,<,>,[,]"
 vim.opt.backspace = "indent,eol,start"
-vim.opt.formatoptions = "tqmM"
--- 折叠：内置 treesitter foldexpr（替代已移除的 nvim-ufo）
+vim.opt.formatoptions = "qmM"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldenable = true
