@@ -8,6 +8,7 @@ return {
       flavour = "mocha",
       background = { light = "latte", dark = "mocha" },
       transparent_background = false,
+      auto_integrations = false,
       integrations = {
         treesitter = true,
         gitsigns = true,
@@ -20,8 +21,13 @@ return {
         ibl = { enabled = true },
         nvim_surround = true,
         oil = true,
+        blink_cmp = true,
+        fzf = true,
+        nvimtree = true,
+        indent_blankline = { enabled = true },
+        lsp_trouble = { enabled = true },
       },
     })
-    vim.cmd.colorscheme "catppuccin"
+    vim.cmd.colorscheme("catppuccin")
   end,
 }
