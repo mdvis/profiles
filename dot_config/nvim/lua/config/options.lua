@@ -7,7 +7,7 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.shortmess:append("a")
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 vim.opt.signcolumn = "yes"
 vim.opt.list = true
 vim.opt.listchars = { tab = ">-", trail = "-" }

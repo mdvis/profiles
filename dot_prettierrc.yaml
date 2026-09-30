@@ -21,7 +21,7 @@ insertPragma: false
 jsxSingleQuote: false
 
 # 超过最大值换行
-printWidth: 80
+printWidth: 100
 
 # markdown 换行 "<preserve|always|never>"
 proseWrap: 'preserve'
