@@ -2,7 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "mason-org/mason-lspconfig.nvim",
+    "mason-org/mason.nvim",
     "saghen/blink.cmp",
   },
   config = function()
