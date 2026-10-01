@@ -92,10 +92,10 @@ return {
 
         -- Diagnostics (0.11+ API: vim.diagnostic.jump 取代 goto_prev/next)
         vim.keymap.set("n", "[d", function()
-          vim.diagnostic.jump({ count = -1, float = true })
+          vim.diagnostic.jump({ count = -vim.v.count1, float = true })
         end, vim.tbl_extend("force", opts, { desc = "Previous diagnostic" }))
         vim.keymap.set("n", "]d", function()
-          vim.diagnostic.jump({ count = 1, float = true })
+          vim.diagnostic.jump({ count = vim.v.count1, float = true })
         end, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
         vim.keymap.set(
           "n",
