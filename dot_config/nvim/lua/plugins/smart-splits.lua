@@ -4,20 +4,22 @@ return {
   opts = {
     -- Ignored filetypes (only while resizing)
     ignored_filetypes = { "oil" },
-    -- Default resize amount
-    default_amount = 3,
-    -- Behavior at edge: 'wrap' | 'split' | 'stop'
-    at_edge = "wrap",
-    -- Float window behavior: 'previous' | 'mux'
-    float_win_behavior = "previous",
-    -- Move cursor to same row when switching splits horizontally
-    move_cursor_same_row = false,
-    -- Cursor follows swapped buffers
-    cursor_follows_swapped_bufs = false,
+    resize = {
+      -- Default resize amount (multiplied by v:count1)
+      amount = 3,
+    },
+    move = {
+      -- Behavior at edge: 'wrap' | 'split' | 'stop'
+      at_edge = "wrap",
+      -- Keep cursor on the same screen row when moving horizontally
+      same_row = false,
+    },
+    swap = {
+      -- Follow the buffer into its new window
+      move_cursor = false,
+    },
     -- Multiplexer integration (auto-detected: tmux, zellij, wezterm, kitty)
-    multiplexer_integration = nil,
-    -- Disable multiplexer nav when zoomed
-    disable_multiplexer_nav_when_zoomed = true,
+    -- via `mux.backend`; zoom handling now lives in the backend plugin.
   },
   keys = {
     -- Resizing splits
